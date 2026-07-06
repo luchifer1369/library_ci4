@@ -51,10 +51,30 @@ abstract class BaseController extends Controller
         if ($user['is_premium'] && !empty($user['premium_expired_at']) && strtotime($user['premium_expired_at']) < time()) {
             $userModel->update($userId, ['is_premium' => false]);
             $user['is_premium'] = false;
-            session()->set('is_premium', false);
         }
 
+        $premiumActive = $this->isPremiumActive($user);
+        $user['is_premium'] = $premiumActive;
+
+        session()->set([
+            'is_premium' => $premiumActive,
+            'poin'       => $user['poin'],
+        ]);
+
         return $user;
+    }
+
+    protected function isPremiumActive(?array $user): bool
+    {
+        if (!$user || empty($user['is_premium'])) {
+            return false;
+        }
+
+        if (empty($user['premium_expired_at'])) {
+            return true;
+        }
+
+        return strtotime($user['premium_expired_at']) >= time();
     }
 
     protected function getNotifications(int $userId): array

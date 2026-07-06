@@ -98,13 +98,13 @@ class AuthController extends BaseController
         // Get updated user data
         $updatedUser = $userModel->find($user['id']);
 
-        // Set session
+        session()->regenerate(true);
         session()->set([
             'userId'       => $updatedUser['id'],
             'nama_lengkap' => $updatedUser['nama_lengkap'],
             'email'        => $updatedUser['email'],
             'role'         => $updatedUser['role'],
-            'is_premium'   => (bool)$updatedUser['is_premium'],
+            'is_premium'   => $this->isPremiumActive($updatedUser),
             'isLoggedIn'   => true,
         ]);
 
@@ -145,9 +145,9 @@ class AuthController extends BaseController
             'email'               => $this->request->getPost('email'),
             'password'            => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
             'role'                => 'user',
-            'is_premium'          => true, // 3 days free trial premium on first register
-            'free_trial_used'     => true,
-            'premium_expired_at'  => date('Y-m-d H:i:s', strtotime('+3 days')),
+            'is_premium'          => false,
+            'free_trial_used'     => false,
+            'premium_expired_at'  => null,
             'poin'                => 0,
             'last_login_date'     => null,
             'auto_deduct_enabled' => false,
@@ -161,7 +161,7 @@ class AuthController extends BaseController
         $notificationModel->insert([
             'user_id' => $newUserId,
             'title'   => 'Selamat Datang di M-Library!',
-            'message' => 'Akun Anda telah berhasil dibuat. Anda mendapatkan Free Trial Premium selama 3 hari. Selamat membaca!',
+            'message' => 'Akun Anda berhasil dibuat. Klaim Free Trial Premium 3 hari di halaman Profil. Selamat membaca!',
             'is_read' => false,
         ]);
 

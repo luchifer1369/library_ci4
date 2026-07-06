@@ -243,17 +243,6 @@ class ReadingController extends BaseController
         ]);
     }
 
-    private function isPremiumActive(array $user): bool
-    {
-        if (!$user['is_premium']) {
-            return false;
-        }
-        if (empty($user['premium_expired_at'])) {
-            return true;
-        }
-        return strtotime($user['premium_expired_at']) >= time();
-    }
-
     private function updateReadingHistory(int $userId, int $bookId, int $pageNum): void
     {
         $historyModel = new ReadingHistoryModel();

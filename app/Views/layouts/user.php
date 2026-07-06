@@ -20,9 +20,32 @@
         .book-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.3); }
         .book-card img { width: 100%; height: 220px; object-fit: cover; }
         .quest-panel { background: rgba(30,41,59,0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; }
-        .notification-dropdown { width: 340px; max-height: 400px; overflow-y: auto; }
-        .notification-item { border-bottom: 1px solid rgba(255,255,255,0.06); padding: 12px 16px; }
-        .notification-item.unread { background: rgba(99,102,241,0.1); }
+        .notification-dropdown {
+            width: 340px;
+            max-height: 400px;
+            overflow-y: auto;
+            background: #1e293b !important;
+            color: #e2e8f0 !important;
+            --bs-dropdown-link-color: #e2e8f0;
+            --bs-dropdown-link-hover-color: #fff;
+            --bs-dropdown-link-hover-bg: rgba(99, 102, 241, 0.15);
+        }
+        .notification-dropdown strong,
+        .notification-dropdown .notif-header {
+            color: #f8fafc !important;
+        }
+        .notification-item {
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 12px 16px;
+            color: #e2e8f0 !important;
+        }
+        .notification-item:hover {
+            background: rgba(99, 102, 241, 0.12) !important;
+        }
+        .notification-item.unread { background: rgba(99, 102, 241, 0.18); }
+        .notification-item .notif-title { color: #f8fafc; font-weight: 600; }
+        .notification-item .notif-message { color: #cbd5e1; }
+        .notification-item .notif-date { color: #94a3b8; }
         .premium-badge { background: linear-gradient(135deg, #f59e0b, #ef4444); font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; }
     </style>
 </head>
@@ -50,21 +73,21 @@
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><?= $unreadCount ?></span>
                             <?php endif; ?>
                         </button>
-                        <div class="dropdown-menu dropdown-menu-end notification-dropdown bg-dark border-secondary">
-                            <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom border-secondary">
+                        <div class="dropdown-menu dropdown-menu-end notification-dropdown border-secondary shadow-lg">
+                            <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom border-secondary notif-header">
                                 <strong>Notifikasi</strong>
                                 <?php if (($unreadCount ?? 0) > 0): ?>
-                                    <a href="<?= base_url('notifications/read-all') ?>" class="small text-primary">Tandai semua dibaca</a>
+                                    <a href="<?= base_url('notifications/read-all') ?>" class="small text-info text-decoration-none">Tandai semua dibaca</a>
                                 <?php endif; ?>
                             </div>
                             <?php if (empty($notifications)): ?>
-                                <div class="text-center text-muted py-4 small">Tidak ada notifikasi</div>
+                                <div class="text-center py-4 small" style="color:#94a3b8;">Tidak ada notifikasi</div>
                             <?php else: ?>
                                 <?php foreach ($notifications as $notif): ?>
-                                    <a href="<?= base_url('notifications/read/' . $notif['id']) ?>" class="notification-item d-block text-decoration-none text-light <?= !$notif['is_read'] ? 'unread' : '' ?>">
-                                        <div class="fw-semibold small"><?= esc($notif['title']) ?></div>
-                                        <div class="small text-muted"><?= esc($notif['message']) ?></div>
-                                        <div class="small text-muted mt-1"><?= date('d M Y H:i', strtotime($notif['created_at'])) ?></div>
+                                    <a href="<?= base_url('notifications/read/' . $notif['id']) ?>" class="notification-item d-block text-decoration-none <?= !$notif['is_read'] ? 'unread' : '' ?>">
+                                        <div class="notif-title small"><?= esc($notif['title']) ?></div>
+                                        <div class="notif-message small"><?= esc($notif['message']) ?></div>
+                                        <div class="notif-date small mt-1"><?= date('d M Y H:i', strtotime($notif['created_at'])) ?></div>
                                     </a>
                                 <?php endforeach; ?>
                             <?php endif; ?>

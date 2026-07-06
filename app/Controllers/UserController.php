@@ -250,7 +250,10 @@ class UserController extends BaseController
             'premium_expired_at' => date('Y-m-d H:i:s', strtotime('+3 days')),
         ]);
 
-        session()->set('is_premium', true);
+        session()->set([
+            'is_premium' => true,
+            'poin'       => $user['poin'],
+        ]);
 
         $notificationModel = new NotificationModel();
         $notificationModel->insert([
@@ -285,9 +288,10 @@ class UserController extends BaseController
             'premium_expired_at' => $expiredAt,
         ]);
 
-        session()->set('is_premium', true);
-
-        $transactionModel = new TransactionModel();
+        session()->set([
+            'is_premium' => true,
+            'poin'       => $user['poin'] - $cost,
+        ]);
         $transactionModel->insert([
             'user_id'     => $userId,
             'type'        => 'premium',
