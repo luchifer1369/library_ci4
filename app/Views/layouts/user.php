@@ -47,6 +47,21 @@
         .notification-item .notif-message { color: #cbd5e1; }
         .notification-item .notif-date { color: #94a3b8; }
         .premium-badge { background: linear-gradient(135deg, #f59e0b, #ef4444); font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; }
+        /* Teks sekunder di tema gelap — Bootstrap text-muted terlalu gelap */
+        main .text-muted { color: #94a3b8 !important; }
+        main h1, main h2, main h3, main h4, main h5, main h6 { color: #f8fafc; }
+        .book-synopsis {
+            color: #cbd5e1;
+            font-size: 1rem;
+            line-height: 1.75;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+        }
+        .table-dark-theme { color: #e2e8f0; }
+        .table-dark-theme td { color: #e2e8f0; vertical-align: middle; }
+        .table-dark-theme td.text-muted { color: #94a3b8 !important; }
     </style>
 </head>
 <body>

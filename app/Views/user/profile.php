@@ -7,7 +7,7 @@
     <div class="col-md-5">
         <div class="quest-panel p-4">
             <h5 class="mb-3">Informasi Akun</h5>
-            <table class="table table-borderless text-white mb-0">
+            <table class="table table-borderless table-dark-theme mb-0">
                 <tr><td class="text-muted">Nama</td><td><?= esc($user['nama_lengkap']) ?></td></tr>
                 <tr><td class="text-muted">Email</td><td><?= esc($user['email']) ?></td></tr>
                 <tr><td class="text-muted">Saldo Poin</td><td><strong><?= $user['poin'] ?> Poin</strong></td></tr>

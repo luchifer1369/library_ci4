@@ -7,8 +7,8 @@
     </div>
     <div class="col-md-8">
         <span class="badge bg-primary mb-2"><?= esc($book['nama_kategori']) ?></span>
-        <h2><?= esc($book['title']) ?></h2>
-        <p class="text-muted"><?= nl2br(esc($book['description'])) ?></p>
+        <h2 class="text-white"><?= esc($book['title']) ?></h2>
+        <div class="book-synopsis mb-3"><?= nl2br(esc($book['description'])) ?></div>
         <div class="d-flex gap-2 mb-3">
             <span class="badge bg-secondary"><i class="fa-solid fa-file me-1"></i><?= $book['total_pages'] ?> Halaman</span>
             <span class="badge bg-success"><i class="fa-solid fa-gift me-1"></i>Gratis hal. <?= $book['free_page_start'] ?>-<?= $book['free_page_end'] ?></span>
