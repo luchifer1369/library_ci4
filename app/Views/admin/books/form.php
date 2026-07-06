@@ -53,7 +53,7 @@
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Halaman Gratis Sampai</label>
                     <input type="number" name="free_page_end" id="free_page_end" class="form-control" min="1" value="<?= old('free_page_end', $book['free_page_end'] ?? 10) ?>" required>
-                    <small class="text-muted">Harus ≥ nilai "Dari". Contoh: Dari <strong>1</strong>, Sampai <strong>10</strong> → hal. 1–10 gratis, hal. 11+ berbayar (1 poin/halaman).</small>
+                    <small class="text-muted">Nomor halaman terakhir yang bisa dibaca gratis user normal.</small>
                 </div>
             </div>
 
