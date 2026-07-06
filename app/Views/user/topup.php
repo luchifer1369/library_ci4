@@ -23,7 +23,7 @@
                 <?php endif; ?>
                 <div class="text-muted mb-3">Rp <?= number_format($pkg['price'], 0, ',', '.') ?></div>
                 <div class="d-flex justify-content-center gap-2 mb-3">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/QRIS_logo.svg" height="24" alt="QRIS">
+                    <img src="/m-library/public/uploads/qris_icon.png" style="height: 50px;" alt="QRIS">
                     <span class="badge bg-success">GoPay</span>
                     <span class="badge bg-primary">DANA</span>
                 </div>
