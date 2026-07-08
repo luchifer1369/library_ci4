@@ -32,9 +32,9 @@ Anda dapat menggunakan kredensial berikut untuk menguji coba fitur aplikasi di b
 
 | Role | Email | Password | Keterangan |
 | :--- | :--- | :--- | :--- |
-| **Admin** | `admin@library.com` | `password123` | Akses penuh ke dashboard admin, kelola buku & analitik. |
-| **User Normal**| `user@library.com` | `password123` | User standar, butuh poin untuk membaca halaman berbayar. |
-| **User Premium**| `premium@library.com` | `password123` | User berlangganan, akses seluruh halaman tanpa potong poin. |
+| **Admin** | `admin@mlibrary.com` | `password123` | Akses penuh ke dashboard admin, kelola buku & analitik. |
+| **User Normal**| `user@mlibrary.com` | `password123` | User standar, butuh poin untuk membaca halaman berbayar. |
+| **User Premium**| `premium@mlibrary.com` | `password123` | User berlangganan, akses seluruh halaman tanpa potong poin. |
 
 ## 🚀 Instalasi & Persiapan
 
